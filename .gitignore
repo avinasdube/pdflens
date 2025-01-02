@@ -1,0 +1,17 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment directories
+venv/
+env/
+.env/
+
+# IDE/editor settings (example for VSCode, add more as needed)
+.vscode/
+
+# Other unnecessary files
+*.log
+*.sqlite3
