@@ -32,6 +32,37 @@ def save_text(text_box):
     except Exception as e:
         messagebox.showerror("Error", f"Failed to save text: {str(e)}")
 
-
+# function to clear text inside text box
 def clear_text(text_box):
     text_box.delete("1.0", "end")
+
+# function to search a word and highlight it
+def search_and_highlight(text_box, search_query, tag_name="highlight", highlight_bg="yellow", highlight_fg="black"):
+    """
+    Searches for the specified query in a text widget and highlights all matches.
+    
+    Parameters:
+        text_widget: The text widget to search in (e.g., a CTkTextbox).
+        search_query: The query to search for.
+        tag_name: The tag name to apply for highlights.
+        highlight_bg: Background color for the highlight.
+        highlight_fg: Foreground (text) color for the highlight.
+    """
+    # clear previous highlights
+    text_box.tag_remove(tag_name, "1.0", "end")
+    
+    if search_query:
+        start_pos = "1.0"
+        while True:
+            # find the start and end indices of the match
+            start_pos = text_box.search(search_query, start_pos, stopindex="end", nocase=True)
+            if not start_pos:
+                break
+            end_pos = f"{start_pos}+{len(search_query)}c"
+            
+            # highlight the match
+            text_box.tag_add(tag_name, start_pos, end_pos)
+            start_pos = end_pos  # Move to the next position
+            
+        # configure the highlight tag
+        text_box.tag_config(tag_name, background=highlight_bg, foreground=highlight_fg)
