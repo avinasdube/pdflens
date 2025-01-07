@@ -4,7 +4,7 @@ from src.pdf_processing import open_pdf
 from src.utils import save_text, clear_text, search_and_highlight
 
 # initializing appearance and theme
-ctk.set_appearance_mode("System")  # Light/Dark mode
+ctk.set_appearance_mode("Light")  # Light/Dark mode
 ctk.set_default_color_theme("./assets/theme.json")  # Custom theme
 
 # loading necessary images
